@@ -1,0 +1,280 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期末作業</title>
+  <style>
+    .foot {
+      clear: both;
+      background-color: rgba(88, 86, 84, 0.753);
+      text-align: center;
+      height: 25px;
+      color: white
+    };
+  </style>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color:gainsboro;">
+  <div class="x-sign">CarShow 汽車展示網</div>
+  <style>
+  .x-sign {
+    --interval: 1s;
+    display: block;
+    text-shadow: 
+      0 0 10px var(--color1),
+      0 0 20px var(--color2),
+      0 0 40px var(--color3),
+      0 0 80px var(--color4);
+    will-change: filter, color;
+    filter: saturate(60%);
+    animation: flicker steps(100) var(--interval) 1s infinite;
+  }
+  .x-sign{
+      background-color: black;
+      font-size: calc(1em + 3vmax);
+      color: tomato;
+    --color1: orangered;
+    --color2: firebrick;
+    --color3: maroon;
+    --color4: darkred;
+  }
+  
+  @keyframes flicker {
+    50% {
+      color: white;
+      filter: saturate(200%) hue-rotate(20deg);
+    }
+  }
+  .ml14 {
+          font-weight: 200;
+          font-size: 3.2em;
+          text-align: center;
+      }
+
+      .ml14 .text-wrapper {
+          position: relative;
+          display: inline-block;
+          padding-top: 0.1em;
+          padding-right: 0.05em;
+          padding-bottom: 0.15em;
+      }
+
+      .ml14 .line {
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background-color:black;
+          transform-origin: 100% 100%;
+          bottom: 0;
+          color: floralwhite;
+          
+      }
+
+      .ml14 .letter {
+          display: inline-block;
+          line-height: 1em;
+      }
+  </style>
+  <script>
+    $(function() {// 設定 a 元素滑鼠進入事件處理器
+    $('li').mouseenter(function(){
+         $(this).css('font-weight','bold');
+         $(this).css('color','blue');
+    });
+    $('h2').mouseenter(function(){
+         $(this).css('font-weight','bold');
+    });
+    // 設定 a 元素滑鼠離開事件處理器
+    $('li').mouseleave(function(){
+         $(this).css('font-weight','normal');
+         $(this).css('color','black');
+    });
+    $('h2').mouseleave(function(){
+         $(this).css('font-weight','normal');
+         
+    });
+  });
+  const signs = document.querySelectorAll('x-sign')
+    const randomIn = (min, max) => (
+      Math.floor(Math.random() * (max - min + 1) + min)
+    )
+    
+    const mixupInterval = el => {
+      const ms = randomIn(2000, 4000)
+      el.style.setProperty('--interval', `${ms}ms`)
+    }
+    
+    signs.forEach(el => {
+      mixupInterval(el)
+      el.addEventListener('webkitAnimationIteration', () => {
+        mixupInterval(el)
+      })
+    })
+</script> 
+  <!-- 巡覽列, navbar-default 表示白底黑字樣式 -->
+  <nav class="navbar navbar-default">
+    <!-- 選單表頭區塊 -->
+    <!-- 按鈕 -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynav">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    </div>
+
+    <!-- 選單 -->
+    <nav class="nav navbar-inverse">
+      <div id="mynav" class="navbar-collapse collapse">
+        <ul class="navbar-nav nav">
+
+          <li><a href="intex.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <li><a href="Audi.html">Audi</a></li>
+          <li><a href="BMW.html">BMW</a></li>
+          <li><a href="Lamborghini.html">Lamborghini</a></li>
+          <li><a href="Porsche.html">Porsche</a></li>
+          <li><a href="Rolls-Royce.html">Rolls-Royce</a></li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-info-sign"></span> ABOUT US<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><span class="glyphicon glyphicon-plane"> 經營團隊</span></a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-user"> 創意總監</span></a></li>
+              <li class="divider"></li> <!-- 分隔線 -->
+              <li><a href="#"><span class="glyphicon glyphicon-envelope"> 加入我們</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </nav>
+
+  <h1 class="ml14">
+    <span class="text-wrapper">
+        <span class="letters">車款介紹</span>
+        <span class="line"></span>
+    </span>
+  </h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <script>
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml14 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({ loop: true })
+            .add({
+                targets: '.ml14 .line',
+                scaleX: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeInOutExpo",
+                duration: 900
+            }).add({
+                targets: '.ml14 .letter',
+                opacity: [0, 1],
+                translateX: [40, 0],
+                translateZ: 0,
+                scaleX: [0.3, 1],
+                easing: "easeOutExpo",
+                duration: 800,
+                offset: '-=600',
+                delay: (el, i) => 150 + 25 * i
+            }).add({
+                targets: '.ml14',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+    
+  <div class=" text-center">
+    <h2 style="background-color: rgb(23, 53, 150); color: white;">Rolls-Royce Phantom</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><img width="560" height="315" src="phantom.jpg"></h3>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><iframe width="560" height="315" src="https://www.youtube.com/embed/BjqPGa7f6aw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3>
+        </div>
+      </div>
+
+        <ul>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">建議售價: NT$3422 萬起</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">變速:8速自排</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">馬力: 563 馬力</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">引擎規格: 6.7 公升 V12</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">油箱容量: 100 公升</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">輪圈尺寸: 前: 直徑 21 吋, 寬 8 吋; 後: 直徑 21 吋, 寬 9.5 吋</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class=" text-center">
+    <h2 style="background-color: rgb(235, 57, 57); color: white;">Rolls-Royce Ghost</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><img width="560" height="315" src="Ghost.jpg"></h3>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><iframe width="560" height="315" src="https://www.youtube.com/embed/rgrR1GI1-t4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3>
+        </div>
+      </div>
+
+     
+        <ul>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">建議售價: NT$1935 萬起</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">變速器: 8速自排</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">馬力:571 馬力</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">尺寸: 長 5,546 公釐 x 寬 2,148 公釐 x 高 1,571 公釐</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">引擎規格: 6.6 公升 V12</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">油箱容量: 90 公升</li>
+        </ul>
+    </div>
+  </div>
+
+  <div class=" text-center">
+    <h2 style="background-color: white; color: rgb(32, 31, 31);">Rolls-Royce Cullinan</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><img width="560" height="315" src="Cullinan.jpg"></h3>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><iframe width="560" height="315" src="https://www.youtube.com/embed/kCqOy9s5QqQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3>
+        </div>
+      </div>
+
+      
+        <ul>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">建議售價: NT$1968 萬起</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">變速器: 8速自排</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">馬力: 571 馬力</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">尺寸: 長 5,341 公釐 x 寬 2,164 公釐</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">引擎規格: 6.7 公升 V12</li>
+          <li style="border-bottom: solid slategrey thick;font-size: large;">油耗: 平均油耗: 6 km/l (市區: 4, 高速: 9)</li>
+        </ul>
+    </div>
+  </div>
+  <div class="foot">Wayne © 2022 海事資訊科技系 | Design </div>
+  </body>
+  </html>

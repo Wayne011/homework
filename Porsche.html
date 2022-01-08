@@ -1,0 +1,271 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>期末作業</title>
+  <style>
+    .foot {
+      clear: both;
+      background-color: rgba(88, 86, 84, 0.753);
+      text-align: center;
+      height: 25px;
+      color: white
+    };
+  </style>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color:gainsboro;">
+  <div class="x-sign">CarShow 汽車展示網</div>
+  <style>
+  .x-sign {
+    --interval: 1s;
+    display: block;
+    text-shadow: 
+      0 0 10px var(--color1),
+      0 0 20px var(--color2),
+      0 0 40px var(--color3),
+      0 0 80px var(--color4);
+    will-change: filter, color;
+    filter: saturate(60%);
+    animation: flicker steps(100) var(--interval) 1s infinite;
+  }
+  .x-sign{
+      background-color: black;
+      font-size: calc(1em + 3vmax);
+      color: tomato;
+    --color1: orangered;
+    --color2: firebrick;
+    --color3: maroon;
+    --color4: darkred;
+  }
+  
+  @keyframes flicker {
+    50% {
+      color: white;
+      filter: saturate(200%) hue-rotate(20deg);
+    }
+  }
+  .ml14 {
+          font-weight: 200;
+          font-size: 3.2em;
+          text-align: center;
+      }
+
+      .ml14 .text-wrapper {
+          position: relative;
+          display: inline-block;
+          padding-top: 0.1em;
+          padding-right: 0.05em;
+          padding-bottom: 0.15em;
+      }
+
+      .ml14 .line {
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          height: 2px;
+          width: 100%;
+          background-color:black;
+          transform-origin: 100% 100%;
+          bottom: 0;
+          color: floralwhite;
+          
+      }
+
+      .ml14 .letter {
+          display: inline-block;
+          line-height: 1em;
+      }
+  </style>
+  <script>
+     $(function() {// 設定 a 元素滑鼠進入事件處理器
+    $('p').mouseenter(function(){
+         $(this).css('font-weight','bold');
+         $(this).css('color','black');
+    });
+    $('h2').mouseenter(function(){
+         $(this).css('font-weight','bold');
+    });
+    // 設定 a 元素滑鼠離開事件處理器
+    $('p').mouseleave(function(){
+         $(this).css('font-weight','normal');
+         $(this).css('color','black');
+    });
+    $('h2').mouseleave(function(){
+         $(this).css('font-weight','normal');
+    });
+  });
+  const signs = document.querySelectorAll('x-sign')
+    const randomIn = (min, max) => (
+      Math.floor(Math.random() * (max - min + 1) + min)
+    )
+    
+    const mixupInterval = el => {
+      const ms = randomIn(2000, 4000)
+      el.style.setProperty('--interval', `${ms}ms`)
+    }
+    
+    signs.forEach(el => {
+      mixupInterval(el)
+      el.addEventListener('webkitAnimationIteration', () => {
+        mixupInterval(el)
+      })
+    })
+</script> 
+  <!-- 巡覽列, navbar-default 表示白底黑字樣式 -->
+  <nav class="navbar navbar-default">
+    <!-- 選單表頭區塊 -->
+    <!-- 按鈕 -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynav">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    </div>
+
+    <!-- 選單 -->
+    <nav class="nav navbar-inverse">
+      <div id="mynav" class="navbar-collapse collapse">
+        <ul class="navbar-nav nav">
+
+          <li><a href="intex.html"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+          <li><a href="Audi.html">Audi</a></li>
+          <li><a href="BMW.html">BMW</a></li>
+          <li><a href="Lamborghini.html">Lamborghini</a></li>
+          <li><a href="Porsche.html">Porsche</a></li>
+          <li><a href="Rolls-Royce.html">Rolls-Royce</a></li>
+          <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-info-sign"></span> ABOUT US<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#"><span class="glyphicon glyphicon-plane"> 經營團隊</span></a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-user"> 創意總監</span></a></li>
+              <li class="divider"></li> <!-- 分隔線 -->
+              <li><a href="#"><span class="glyphicon glyphicon-envelope"> 加入我們</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </nav>
+
+  <h1 class="ml14">
+    <span class="text-wrapper">
+        <span class="letters">車款介紹</span>
+        <span class="line"></span>
+    </span>
+  </h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <script>
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml14 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({ loop: true })
+            .add({
+                targets: '.ml14 .line',
+                scaleX: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeInOutExpo",
+                duration: 900
+            }).add({
+                targets: '.ml14 .letter',
+                opacity: [0, 1],
+                translateX: [40, 0],
+                translateZ: 0,
+                scaleX: [0.3, 1],
+                easing: "easeOutExpo",
+                duration: 800,
+                offset: '-=600',
+                delay: (el, i) => 150 + 25 * i
+            }).add({
+                targets: '.ml14',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+  <div class=" text-center">
+    <h2 style="background-color: rgb(11, 12, 11); color: white;">Porsche GT2 RS</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><img width="560" height="315" src="GT2RS.jpg"></h3>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><iframe width="560" height="315" src="https://www.youtube.com/embed/7NngH_W68rI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><h3>
+        </div>
+      </div>
+
+      <div class="jumbotron bg-dark">
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">憑藉如此強勁的馬力，新款911 GT2 RS 得以超越搭載3.6 升引擎的前代車型，產生多59 千瓦(80 匹) 的馬力；</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">更大的排氣量則有助達到其750 牛頓米的豐沛扭力(比前代增加50 牛頓米)。</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">這具高性能引擎以911 Turbo S 跑車的引擎為基礎，可將427 千瓦(580 匹) 的馬力傳遞至雙離合器變速箱。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class=" text-center">
+    <h2 style="background-color: rgb(230, 36, 36); color: white;">Porsche GT3 RS</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><img width="560" height="315" src="GT3RS.jpg"></h3>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><iframe width="560" height="315" src="https://www.youtube.com/embed/XM6TTuVTGCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3>
+        </div>
+      </div>
+
+      <div class="jumbotron bg-dark">
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">動力系統 全新911 GT3 RS搭載4.0升6缸自然進氣引擎，將這輛跑車推向了全新的極限:</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">其水平對臥引擎較上一代車型和最新911 GT3多出20hp（15 kW）。扭力增加了10 Nm達到470 Nm。</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">最大馬力峰值為8,250 rpm，最大扭力峰值則落在6,000 rpm。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class=" text-center">
+    <h2 style="background-color: rgb(245, 225, 46); color: white;">Porsche Panamera Turbo S</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><img width="560" height="315" src="Panamera Turbo S.jpg"></h3>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="d-flex justify-content-center">
+          <h3><iframe width="560" height="315" src="https://www.youtube.com/embed/Eyfk5OFsR94" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></h3>
+        </div>
+      </div>
+
+      <div class="jumbotron bg-dark ">
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">Panamera Turbo S 最大動力為 630hp，最大扭力為83.6kgm ，在Sport Plus模式中0-100 km/h</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">加速為 3.1 秒。此具在Weissach研發，並於Zuffenhausen製造的4.0 升 V8雙渦輪增壓引擎，</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">讓Panamera Turbo S極速高達315km/h。<br></p>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">同時，保時捷依據各車型調整各自搭載的三氣室氣壓懸載系統、保時捷主動式懸載調整系統 PASM、</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">配置保時捷扭力分導升級系統（PTV Plus）的保時捷運動化動態底盤控制系統（PDCC Sport），</p><br>
+        <p style="border-bottom: solid rgba(85, 90, 95, 0.925) thick;font-size: large;">使Panamera在展現其強大性能之時，提供駕駛者操之在我的駕馭感受。</p>
+        
+      </div>
+    </div>
+  </div>
+  <div class="foot">Wayne © 2022 海事資訊科技系 | Design </div>
+</body>
+</html>
